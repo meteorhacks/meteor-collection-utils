@@ -1,6 +1,6 @@
 Package.describe({
   "summary": "Expose some underline collection apis",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "git": "https://github.com/meteorhacks/meteor-collection-utils.git",
   "name": "meteorhacks:collection-utils"
 });
