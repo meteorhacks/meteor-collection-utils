@@ -4,7 +4,6 @@ var originalOpen = MongoInternals.RemoteCollectionDriver.prototype.open;
 MongoInternals.RemoteCollectionDriver.prototype.open = function(name) {
   var self = this;
   var ret = originalOpen.call(this, name);
-  ret._getCollection = this.mongo._getCollection.bind(this.mongo, name);
   ret._getDb = wrapWithDb(this.mongo);
 
   return ret;
@@ -14,7 +13,7 @@ Mongo.Collection.prototype._getDb = function() {
   if(typeof this._collection._getDb == 'function') {
     return this._collection._getDb();
   } else {
-    // if we can't find `_withDb()`, that means this is 
+    // if we can't find `_getDb()`, that means this is
     // a collection created before initializing this collection
     // if so, use the default mongo connection
     //    eg:- Meteor.users
