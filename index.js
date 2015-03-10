@@ -28,6 +28,13 @@ Mongo.Collection.prototype._getCollection = function() {
 }
 
 function wrapWithDb(mongoConn) {
+  // With Meteor 1.0.4, db creation is synchronous and wait in the connection
+  // constructor. So, we can get it like this.
+  if(mongoConn.db) {
+    return mongoConn.db;
+  }
+
+  // This is for Meteor versions older than 1.0.4
   var f = new Future();
   mongoConn._withDb(function(db) {
     f.return(db);
