@@ -1,3 +1,5 @@
+# DEPRECATED.  Use `Mongo.Collection.rawCollection` and `Mongo.Collection.rawDatabase` instead.
+
 # meteorhacks:collection-utils
 
 Exposes some internal `Mongo Connection` apis into `Mongo.Connection`.
